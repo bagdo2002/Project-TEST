@@ -1,0 +1,17 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore compiled binary files
+*.o
+*.pyc
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# Ignore configuration files with sensitive data
+config.ini
+secrets.json
