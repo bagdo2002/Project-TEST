@@ -67,17 +67,15 @@ const booleanStates = create<booleanStaff>((set) => ({
   setUpdate: (update) => set({ update }),
 }));
 
-interface idd{
-
-  id:number|null;
-  setId : (id:number)=> void
+interface idd {
+  id: number | null;
+  setId: (id: number) => void;
 }
 
-const idState =create <idd> ((set)=>({
-  id:null,
-  setId : (id)=>set({id})
-}))
-
+const idState = create<idd>((set) => ({
+  id: null,
+  setId: (id) => set({ id }),
+}));
 
 const userState = create<User>((set) => ({
   user: {
@@ -88,7 +86,7 @@ const userState = create<User>((set) => ({
     phone: "",
   },
 
-  setUser: (user) => set({ user })
+  setUser: (user) => set({ user }),
 }));
 
 const Users = () => {
@@ -97,7 +95,7 @@ const Users = () => {
     booleanStates();
   const { user, setUser } = userState();
 
-  const {id, setId} = idState()
+  const { id, setId } = idState();
 
   const [form] = Form.useForm();
 
@@ -265,14 +263,18 @@ const Users = () => {
   return (
     <div>
       {pieChart ? (
-        <Chart dataLength={users.length} pieChart={pieChart} setPieChart={setPieChart} />
+        <Chart
+          dataLength={users.length}
+          pieChart={pieChart}
+          setPieChart={setPieChart}
+        />
       ) : open ? (
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "1000px",
+            height: "700px",
           }}
         >
           <Form
@@ -418,6 +420,7 @@ const Users = () => {
           </div>
 
           <Table
+            pagination={{ pageSize: 8 }}
             onRow={(record) => ({
               onDoubleClick: () => {
                 return handleChange(record), setUpdate(true), setId(record.id);
